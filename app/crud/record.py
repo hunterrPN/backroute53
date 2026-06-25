@@ -2,7 +2,8 @@ from sqlalchemy.orm import Session
 from app.models.record import Record
 from app.schemas.record import RecordCreate, RecordUpdate
 
-def get_records_by_zone(db: Session, hosted_zone_id: int):
+# Important: Router mein jo naam use ho raha hai, wohi naam rakho
+def get_records_by_hosted_zone(db: Session, hosted_zone_id: int):
     return db.query(Record).filter(Record.hosted_zone_id == hosted_zone_id).all()
 
 def create_record(db: Session, record: RecordCreate, hosted_zone_id: int):
@@ -11,7 +12,7 @@ def create_record(db: Session, record: RecordCreate, hosted_zone_id: int):
         name=record.name,
         type=record.type,
         value=record.value,
-        ttl=record.ttl
+        ttl=record.ttl or 300
     )
     db.add(db_record)
     db.commit()

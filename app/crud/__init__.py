@@ -9,7 +9,7 @@ from .hosted_zone import (
 )
 
 from .record import (
-    get_records_by_zone,
+    get_records_by_hosted_zone,   # ← Yeh naam match karna chahiye
     create_record,
     get_record,
     update_record,
