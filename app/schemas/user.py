@@ -9,6 +9,7 @@ class UserBase(BaseModel):
 class UserCreate(UserBase):
     password: str
 
+# Yeh missing tha
 class UserLogin(BaseModel):
     email: EmailStr
     password: str
@@ -23,6 +24,6 @@ class TokenData(BaseModel):
 class UserResponse(UserBase):
     id: int
     created_at: datetime
-    
+
     class Config:
         from_attributes = True
